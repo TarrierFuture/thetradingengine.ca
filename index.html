@@ -222,6 +222,63 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
 .footer-links a:hover{color:var(--cyan);}
 .footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);}
 
+
+/* ── MODULE VIEWER ── */
+.curr-item[data-mod]{cursor:pointer;}
+.curr-item[data-mod]:focus-visible{outline:1px solid var(--cyan);outline-offset:-1px;}
+.curr-more{display:block;margin-top:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color 0.2s,transform 0.2s;}
+.curr-item[data-mod]:hover .curr-more,.curr-item[data-mod]:focus-visible .curr-more{color:var(--cyan);transform:translateX(3px);}
+body.modal-open{overflow:hidden;}
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(4,6,9,0.84);backdrop-filter:blur(6px);}
+.modal.open{display:flex;animation:modalIn 0.2s ease;}
+@keyframes modalIn{from{opacity:0;}to{opacity:1;}}
+.modal-panel{position:relative;width:100%;max-width:780px;max-height:calc(100vh - 48px);display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border2);border-radius:2px;overflow:hidden;}
+.modal-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:2;}
+.modal.premium .modal-panel{border-color:rgba(245,166,35,0.35);}
+.modal.premium .modal-panel::before{background:linear-gradient(90deg,var(--swing),transparent);height:3px;}
+.modal-head{padding:32px 36px 22px;border-bottom:1px solid var(--border);position:relative;flex-shrink:0;}
+.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border2);color:var(--text2);font-size:18px;line-height:1;border-radius:2px;cursor:pointer;transition:all 0.2s;font-family:'DM Mono',monospace;}
+.modal-close:hover{border-color:var(--cyan);color:var(--cyan);}
+.modal-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;padding-right:44px;}
+.modal.premium .modal-tag{color:var(--swing);}
+.modal-titlerow{display:flex;align-items:flex-start;gap:18px;}
+.modal-num{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:0.9;color:var(--border2);flex-shrink:0;}
+.modal.premium .modal-num{color:rgba(245,166,35,0.45);}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,36px);letter-spacing:2px;color:var(--white);line-height:1;padding-right:40px;}
+.modal-desc{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300;font-style:italic;margin-top:14px;}
+.modal-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.modal-badges .curr-badge{margin-top:0;margin-right:0;}
+.modal-body{overflow-y:auto;flex:1;background:var(--surface2);}
+.modal-sec{display:flex;align-items:center;gap:12px;padding:13px 36px;background:var(--surface3);border-bottom:1px solid var(--border);border-top:1px solid var(--border);}
+.modal-sec:first-child{border-top:none;}
+.modal-sec b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:18px;color:var(--muted);letter-spacing:1px;}
+.modal-sec span{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text2);}
+.modal-lesson{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:16px;padding:13px 36px;border-bottom:1px solid var(--border);}
+.modal-lesson:last-child{border-bottom:none;}
+.modal-lesson:hover{background:rgba(0,229,255,0.03);}
+.ml-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-align:right;}
+.ml-title{font-size:13px;color:var(--text2);font-weight:300;line-height:1.5;}
+.ml-title strong{color:var(--text);font-weight:500;}
+.ml-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:1px;white-space:nowrap;background:rgba(245,166,35,0.08);color:var(--swing);border:1px solid rgba(245,166,35,0.2);}
+.ml-tag.t-green{background:rgba(76,175,125,0.08);color:var(--invest);border-color:rgba(76,175,125,0.2);}
+.modal-note{padding:14px 36px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);border-top:1px dashed var(--border);}
+.modal-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 36px;background:var(--surface);border-top:1px solid var(--border2);flex-shrink:0;}
+.modal-nav{display:flex;gap:8px;}
+.modal-nav button{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 14px;background:transparent;border:1px solid var(--border2);color:var(--text2);border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.modal-nav button:hover:not(:disabled){border-color:var(--cyan);color:var(--cyan);}
+.modal-nav button:disabled{opacity:0.3;cursor:default;}
+.modal-cta{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;padding:11px 24px;background:var(--cyan);color:var(--bg);border:1px solid var(--cyan);text-decoration:none;border-radius:2px;transition:all 0.2s;}
+.modal-cta:hover{background:transparent;color:var(--cyan);}
+@media(max-width:680px){
+  .modal{padding:0;}
+  .modal-panel{max-height:100vh;height:100%;border-radius:0;border-left:none;border-right:none;}
+  .modal-head{padding:26px 22px 18px;}
+  .modal-sec,.modal-lesson,.modal-note,.modal-foot{padding-left:22px;padding-right:22px;}
+  .modal-lesson{grid-template-columns:28px 1fr;}
+  .ml-tag{display:none;}
+  .modal-num{font-size:44px;}
+}
+
 @media(max-width:900px){
   .nav-links{display:none;}
   .hamburger{display:flex;}
@@ -304,71 +361,82 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
     <h2 class="section-h2">THE <span class="grad">CURRICULUM</span></h2>
     <p class="section-lead">From zero to fully knowledgeable. Modules 00, 01, 02, 03, 04, 06, 07, 08 and 09 are free. Modules 05 and 10 are part of the Accelerator Program.</p>
     <div class="curriculum-grid">
-      <div class="curr-item wide c-purple">
+      <div class="curr-item wide c-purple" data-mod="00" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">00</div>
         <div class="curr-title">THE STARTING LINE</div>
         <div class="curr-desc">Complete beginners only. No experience required. Covers financial markets, your first chart, candlesticks, trading terminology, and whether trading is right for you. 28 lessons across 4 sections.</div>
         <span class="curr-badge cb-free">Free</span><span class="curr-badge cb-purple">Pre-Course · Complete Beginners</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-cyan">
+      <div class="curr-item c-cyan" data-mod="01" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">01</div>
         <div class="curr-title">WHAT ARE FUTURES?</div>
         <div class="curr-desc">ES and NQ — what they are, how they work, contract specs, micro vs standard, and who actually trades them.</div>
         <span class="curr-badge cb-free">Free</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-cyan">
+      <div class="curr-item c-cyan" data-mod="02" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">02</div>
         <div class="curr-title">HOW MARKETS ACTUALLY WORK</div>
         <div class="curr-desc">Auction market theory, order types, how price moves, what market makers do, and why most retail traders lose.</div>
         <span class="curr-badge cb-free">Free</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-cyan">
+      <div class="curr-item c-cyan" data-mod="03" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">03</div>
         <div class="curr-title">READING MARKET STRUCTURE</div>
         <div class="curr-desc">Support and resistance, the Initial Balance, prior day levels, opening types, and how to read a daily chart with purpose.</div>
         <span class="curr-badge cb-free">Free</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-blue">
+      <div class="curr-item c-blue" data-mod="04" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">04</div>
         <div class="curr-title">VOLUME PROFILE FUNDAMENTALS</div>
         <div class="curr-desc">VAH, VAL, POC, HVN, LVN, the 20-day composite, and how to set up volume profile on TradingView.</div>
         <span class="curr-badge cb-free">Free</span><span class="curr-badge cb-gold">Free Indicator Included</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-blue">
+      <div class="curr-item c-blue" data-mod="05" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">05</div>
         <div class="curr-title">GAMMA EXPOSURE & INSTITUTIONAL FLOW</div>
         <div class="curr-desc">GEX demystified. GEX Flip Level, positive vs negative regimes, HVL 0DTE, Net DEX, dark pools, and algo flow explained without the maths.</div>
         <span class="curr-badge cb-paid">Accelerator Program</span><span class="curr-badge cb-gold">Regime Playbook + Gamma Checklist</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-blue">
+      <div class="curr-item c-blue" data-mod="06" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">06</div>
         <div class="curr-title">BUILDING A TRADING SYSTEM</div>
         <div class="curr-desc">System vs strategy, confluence, trade grading, risk management, and the free IB LVN Rejection setup — a real, executable strategy with full rules.</div>
         <span class="curr-badge cb-free">Free</span><span class="curr-badge cb-cyan">Free Strategy Included</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-purple">
+      <div class="curr-item c-purple" data-mod="07" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">07</div>
         <div class="curr-title">THE PRE-MARKET ROUTINE</div>
         <div class="curr-desc">The 4-step routine, determining session bias, marking levels, building your trade plan, and the no-trade filters that protect your account.</div>
         <span class="curr-badge cb-free">Free</span><span class="curr-badge cb-purple">Downloadable Checklist</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-purple">
+      <div class="curr-item c-purple" data-mod="08" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">08</div>
         <div class="curr-title">TRADING PSYCHOLOGY & DISCIPLINE</div>
         <div class="curr-desc">Why psychology is structural not a willpower problem. Overtrading, revenge trading, process confidence, and the daily routine of a disciplined trader.</div>
         <span class="curr-badge cb-free">Free</span><span class="curr-badge cb-gold">Trader Assessment Included</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-purple">
+      <div class="curr-item c-purple" data-mod="09" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">09</div>
         <div class="curr-title">GETTING STARTED FOR REAL</div>
         <div class="curr-desc">Choosing a platform, prop trading explained, paper vs live trading, your 90-day screen time plan, and what the Accelerator Program adds that the free modules cannot.</div>
         <span class="curr-badge cb-free">Free</span>
+        <span class="curr-more">View lessons →</span>
       </div>
-      <div class="curr-item c-swing">
+      <div class="curr-item c-swing" data-mod="10" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="curr-num">10</div>
         <div class="curr-title">ADVANCED AUCTION</div>
         <div class="curr-desc">Volume profile, VWAP and market auction theory combined into one read — how value, fair price and auction behaviour come together to define trade location. Builds on Modules 02, 03 and 04.</div>
         <span class="curr-badge cb-paid">Accelerator Program</span><span class="curr-badge cb-gold">In Development</span>
+        <span class="curr-more">View lessons →</span>
       </div>
     </div>
   </div>
@@ -623,6 +691,24 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
   </div>
 </footer>
 
+<!-- MODULE VIEWER -->
+<div class="modal" id="modModal" role="dialog" aria-modal="true" aria-labelledby="modTitle" aria-hidden="true">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <button class="modal-close" id="modClose" aria-label="Close">×</button>
+      <span class="modal-tag" id="modTag"></span>
+      <div class="modal-titlerow"><div class="modal-num" id="modNum"></div><div class="modal-title" id="modTitle"></div></div>
+      <div class="modal-desc" id="modDesc"></div>
+      <div class="modal-badges" id="modBadges"></div>
+    </div>
+    <div class="modal-body" id="modBody"></div>
+    <div class="modal-foot">
+      <div class="modal-nav"><button id="modPrev">← Prev</button><button id="modNext">Next →</button></div>
+      <a class="modal-cta" id="modCta" href="https://www.skool.com/thetradingengine-3795/about">Join Free</a>
+    </div>
+  </div>
+</div>
+
 <script>
 function gearPath(r,teeth,toothH){
   const n=teeth*4;const pts=[];
@@ -688,6 +774,72 @@ document.querySelectorAll(".fade-up").forEach(el=>{
   el.style.animationPlayState="paused";
   observer.observe(el);
 });
+
+/* ── MODULE VIEWER ── */
+const MODULES=[{"num":"00","title":"THE STARTING LINE","desc":"For complete beginners. No experience required. No embarrassment. Skip this module if you already know how to read a chart.","premium":false,"draft":false,"sections":[{"letter":"A","name":"Understanding Markets — Before Charts","lessons":[{"n":"01","t":"What is a financial market — and why it exists","tag":""},{"n":"02","t":"Buyers and sellers — the only two forces that matter","tag":""},{"n":"03","t":"What is price — and why it moves","tag":""},{"n":"04","t":"The difference between investing and trading","tag":""},{"n":"05","t":"Why people lose money trading — the honest introduction","tag":""}]},{"letter":"B","name":"Your First Chart","lessons":[{"n":"06","t":"What is TradingView — and how to set it up for free","tag":""},{"n":"07","t":"Reading a price chart for the first time — time, price, and movement","tag":""},{"n":"08","t":"Candlesticks explained — open, high, low, close in plain English","tag":""},{"n":"09","t":"Green candle vs red candle — what they actually mean","tag":""},{"n":"10","t":"Bullish vs bearish — the two states of any market","tag":""},{"n":"11","t":"Candlestick patterns beginners should know — and which ones actually matter","tag":""},{"n":"12","t":"Timeframes explained — why the same market looks different on 1min vs daily","tag":""},{"n":"13","t":"Navigating TradingView — drawing tools, indicators, watchlists","tag":""}]},{"letter":"C","name":"Trading Terminology","lessons":[{"n":"14","t":"Long vs short — buying and selling explained","tag":""},{"n":"15","t":"What is leverage — and why it's dangerous before you understand it","tag":""},{"n":"16","t":"What is margin — and what happens when you run out","tag":""},{"n":"17","t":"Profit, loss, and drawdown — the three numbers that define your trading","tag":""},{"n":"18","t":"Ticks and points — the language of price movement in futures","tag":""},{"n":"19","t":"What is a broker — and what do they actually do","tag":""},{"n":"20","t":"Bid, ask, and spread — the hidden cost of every trade","tag":""},{"n":"21","t":"Bull market, bear market, sideways — the three environments","tag":""}]},{"letter":"D","name":"Is Trading Right For You?","lessons":[{"n":"22","t":"The honest truth about trading as a career path","tag":""},{"n":"23","t":"How much capital do you actually need to start","tag":""},{"n":"24","t":"The time commitment — what serious trading actually requires","tag":""},{"n":"25","t":"Paper trading — why you should start here, not with real money","tag":""},{"n":"26","t":"Setting realistic expectations — what year 1 actually looks like","tag":""},{"n":"27","t":"The trader's mindset — patience, process, and detachment from outcomes","tag":""},{"n":"28","t":"<strong>→ You're ready. Proceed to Module 1.<\/strong>","tag":"Checkpoint"}]}],"count":28},{"num":"01","title":"WHAT ARE FUTURES?","desc":"The foundation. No assumptions. Everyone starts here regardless of experience level.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"What is a futures contract — and why it exists","tag":""},{"n":"02","t":"How futures differ from stocks, options, and forex","tag":""},{"n":"03","t":"The instruments: ES and NQ — what they track and why they matter","tag":""},{"n":"04","t":"Contract specs — tick size, tick value, margin, and expiry","tag":""},{"n":"05","t":"Micro vs standard contracts — sizing for your account","tag":""},{"n":"06","t":"Who actually trades futures — retail, institutions, market makers","tag":""},{"n":"07","t":"The trading session — RTH, Globex, and why session timing matters","tag":""}]}],"count":7},{"num":"02","title":"HOW MARKETS ACTUALLY WORK","desc":"Most beginners skip this. Don't. This is the layer that separates informed traders from gamblers.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"The auction market theory — price seeks value, not direction","tag":""},{"n":"02","t":"What is the bid/ask spread and how does it affect you","tag":""},{"n":"03","t":"Order types — market, limit, stop, and when to use each","tag":""},{"n":"04","t":"How price moves — liquidity, imbalance, and absorption","tag":""},{"n":"05","t":"What market makers do and why it matters to your trades","tag":""},{"n":"06","t":"The role of volume — what it confirms and what it doesn't","tag":""},{"n":"07","t":"Why most retail traders lose — structural disadvantages explained honestly","tag":""}]}],"count":7},{"num":"03","title":"READING MARKET STRUCTURE","desc":"The language of price. Learn to read before you trade.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"Support and resistance — why levels work and why they fail","tag":""},{"n":"02","t":"Trend, range, and transition — the three market states","tag":""},{"n":"03","t":"Higher highs, lower lows — basic structure identification","tag":""},{"n":"04","t":"The Initial Balance — what it is and why professionals use it","tag":""},{"n":"05","t":"Prior day high, low, VAH, VAL, POC — the reference levels that matter","tag":""},{"n":"06","t":"Opening types — gap up, gap down, inside value, outside value","tag":""},{"n":"07","t":"How to read a daily chart with purpose — not noise","tag":""}]}],"count":7},{"num":"04","title":"VOLUME PROFILE FUNDAMENTALS","desc":"Your core edge tool. Taught properly from scratch. Includes your first free resource.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"What volume profile is and why it beats traditional indicators","tag":""},{"n":"02","t":"Value Area, POC, VAH, VAL — definitions and practical meaning","tag":""},{"n":"03","t":"High Volume Nodes (HVN) — where price accepts and slows","tag":""},{"n":"04","t":"Low Volume Nodes (LVN) — where price rejects and accelerates","tag":""},{"n":"05","t":"The 20-day composite profile — seeing long-term institutional memory","tag":""},{"n":"06","t":"Session vs weekly vs composite — when to use each timeframe","tag":""},{"n":"07","t":"How to set up volume profile on TradingView — step by step","tag":""},{"n":"08","t":"<strong>FREE INDICATOR: The RPBG Colour System<\/strong> — applying the Red/Purple/Blue/Green hierarchy to your charts","tag":"Free Resource"}]}],"count":8},{"num":"05","title":"GAMMA EXPOSURE & INSTITUTIONAL FLOW","desc":"Demystified. This is what separates informed traders from guessers.","premium":true,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"What options gamma is — explained without the maths","tag":""},{"n":"02","t":"Why gamma exposure affects futures price movement","tag":""},{"n":"03","t":"The GEX Flip Level — what it means for directional bias","tag":""},{"n":"04","t":"Positive vs negative GEX regimes — mean reversion vs trending","tag":""},{"n":"05","t":"HVL 0DTE — what it is and why expiration days are different","tag":""},{"n":"06","t":"Net Delta Exposure (DEX) — are market makers buying dips or selling rallies","tag":""},{"n":"07","t":"Introduction to institutional order flow — dark pools, algo flow, net flow","tag":""},{"n":"08","t":"Gamma and options flow tools — a practical three-stage walkthrough","tag":""}]}],"count":8},{"num":"06","title":"BUILDING A TRADING SYSTEM","desc":"The difference between a strategy and a system. Includes the free strategy.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"What a trading system is — rules, filters, and process","tag":""},{"n":"02","t":"Why discretionary trading fails most people","tag":""},{"n":"03","t":"Setup vs signal vs trigger — understanding the three layers of entry","tag":""},{"n":"04","t":"The concept of confluence — why one reason is never enough","tag":""},{"n":"05","t":"Trade grading — how to score setups before you take them","tag":""},{"n":"06","t":"Risk management fundamentals — position sizing, stop placement, R multiples","tag":""},{"n":"07","t":"The risk-reward framework — why 1:1.5 minimum is non-negotiable","tag":""},{"n":"08","t":"<strong>FREE STRATEGY: The IB LVN Rejection<\/strong> — simplified beginner version of Setup 1, with entry rules, stop placement, and targets","tag":"Free Resource"}]}],"count":8},{"num":"07","title":"THE PRE-MARKET ROUTINE","desc":"Preparation is the trade. Execution is just the result.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"Why preparation separates profitable traders from gamblers","tag":""},{"n":"02","t":"The 4-step pre-market routine — volume profile, gamma, flow, bias","tag":"Steps 2–3 use Module 05"},{"n":"03","t":"How to determine session bias before the market opens","tag":""},{"n":"04","t":"Marking your levels — what to mark and what to ignore","tag":""},{"n":"05","t":"Building your daily trade plan — a repeatable template","tag":""},{"n":"06","t":"When NOT to trade — the no-trade filters that protect your account","tag":""},{"n":"07","t":"Your pre-market checklist — downloadable template","tag":"Download"}]}],"count":7},{"num":"08","title":"TRADING PSYCHOLOGY & DISCIPLINE","desc":"The real reason traders fail. Taught without the fluff.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"Why psychology is a structural problem, not a willpower problem","tag":""},{"n":"—","t":"<strong>EXERCISE: The Trader Archetype Assessment<\/strong> — 25 questions to find your operating mode","tag":"Free Resource"},{"n":"02","t":"The two enemies — overtrading and revenge trading","tag":""},{"n":"03","t":"How losses affect decision-making — the neuroscience in plain English","tag":""},{"n":"04","t":"Building process-based confidence vs outcome-based confidence","tag":""},{"n":"05","t":"The daily routine of a disciplined trader","tag":""},{"n":"06","t":"How to review your trades — the post-session debrief","tag":""},{"n":"07","t":"When to stop trading — daily loss limits and session rules","tag":""},{"n":"08","t":"The long game — why consistency beats performance every time","tag":""}]}],"count":9},{"num":"09","title":"GETTING STARTED FOR REAL","desc":"From curriculum to live screen time. The honest bridge between knowledge and execution.","premium":false,"draft":false,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"Choosing a broker and platform — what to look for","tag":""},{"n":"02","t":"Prop trading explained — what it is, how it works, who it's for","tag":""},{"n":"03","t":"How to pass a prop firm evaluation — process and mindset","tag":""},{"n":"04","t":"Paper trading vs live trading — the honest truth about the difference","tag":""},{"n":"05","t":"Building your first 90-day screen time plan","tag":""},{"n":"06","t":"What to track in a trading journal — and why most journals fail","tag":""},{"n":"07","t":"Where to go from here — what the Accelerator Program adds that this curriculum cannot","tag":""}]}],"count":7},{"num":"10","title":"ADVANCED AUCTION: VOLUME PROFILE, VWAP & MARKET AUCTION THEORY","desc":"Where the three tools become one read. How value, fair price and auction behaviour combine into trade location.","premium":true,"draft":true,"sections":[{"letter":"","name":"","lessons":[{"n":"01","t":"Auction theory in depth — value, acceptance, rejection and migration","tag":""},{"n":"02","t":"Day types and profile shapes — what the shape of the day tells you","tag":""},{"n":"03","t":"VWAP explained — what it measures and who uses it","tag":""},{"n":"04","t":"Anchored VWAP and deviation bands — fair price from a chosen starting point","tag":""},{"n":"05","t":"VWAP and the value area together — when two measures of fair price agree","tag":""},{"n":"06","t":"Developing value — reading POC and VWAP migration during the session","tag":""},{"n":"07","t":"Initiative vs responsive activity — who is in control of the auction","tag":""},{"n":"08","t":"<strong>The combined read<\/strong> — building trade location from profile, VWAP and auction context","tag":""}]}],"count":8}];
+(function(){
+  const modal=document.getElementById("modModal");
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  let idx=0,lastFocus=null;
+  function lessonCount(m){return m.sections.reduce((a,s)=>a+s.lessons.filter(l=>l.n!=="—").length,0);}
+  function render(i){
+    idx=i;const m=MODULES[i];
+    modal.classList.toggle("premium",m.premium);
+    $("modTag").textContent=m.premium?"Premium · Accelerator Program":(m.num==="00"?"Pre-Course · Complete Beginners":"Core Curriculum · Free");
+    $("modNum").textContent=m.num;
+    $("modTitle").textContent=m.title;
+    $("modDesc").textContent=m.desc;
+    const n=lessonCount(m);
+    let b='<span class="curr-badge '+(m.premium?"cb-paid":"cb-free")+'">'+(m.premium?"Accelerator Program":"Free")+'</span>';
+    b+='<span class="curr-badge cb-cyan">'+n+' Lessons</span>';
+    if(m.sections.length>1) b+='<span class="curr-badge cb-purple">'+m.sections.length+' Sections</span>';
+    $("modBadges").innerHTML=b;
+    let body="";
+    m.sections.forEach(s=>{
+      if(s.letter) body+='<div class="modal-sec"><b>'+esc(s.letter)+'</b><span>'+esc(s.name)+'</span></div>';
+      s.lessons.forEach(l=>{
+        const tg=l.tag?'<span class="ml-tag'+(/download|checkpoint/i.test(l.tag)?" t-green":"")+'">'+esc(l.tag)+'</span>':"<span></span>";
+        body+='<div class="modal-lesson"><span class="ml-num">'+esc(l.n)+'</span><span class="ml-title">'+l.t+'</span>'+tg+'</div>';
+      });
+    });
+    if(m.draft) body+='<div class="modal-note">Draft outline — lessons may change before launch.</div>';
+    $("modBody").innerHTML=body;$("modBody").scrollTop=0;
+    $("modPrev").disabled=i===0;$("modNext").disabled=i===MODULES.length-1;
+    const cta=$("modCta");cta.textContent=m.premium?"Join Free — Get Notified":(m.num==="00"?"Join Free → Start Module 0":"Join Free → Start Learning");
+  }
+  function open(num){
+    const i=MODULES.findIndex(m=>m.num===num);if(i<0)return;
+    lastFocus=document.activeElement;render(i);
+    modal.classList.add("open");modal.setAttribute("aria-hidden","false");
+    document.body.classList.add("modal-open");$("modClose").focus();
+  }
+  function close(){
+    modal.classList.remove("open");modal.setAttribute("aria-hidden","true");
+    document.body.classList.remove("modal-open");
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+  document.querySelectorAll(".curr-item[data-mod]").forEach(el=>{
+    el.addEventListener("click",()=>open(el.dataset.mod));
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(el.dataset.mod);}});
+  });
+  $("modClose").addEventListener("click",close);
+  modal.addEventListener("click",e=>{if(e.target===modal)close();});
+  $("modPrev").addEventListener("click",()=>{if(idx>0)render(idx-1);});
+  $("modNext").addEventListener("click",()=>{if(idx<MODULES.length-1)render(idx+1);});
+  document.addEventListener("keydown",e=>{
+    if(!modal.classList.contains("open"))return;
+    if(e.key==="Escape")close();
+    else if(e.key==="ArrowLeft"&&idx>0)render(idx-1);
+    else if(e.key==="ArrowRight"&&idx<MODULES.length-1)render(idx+1);
+    else if(e.key==="Tab"){
+      const f=[...modal.querySelectorAll("button:not(:disabled),a[href]")];
+      const first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
+})();
 </script>
 </body>
 </html>
